@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="settings-theme.css">
   <link rel="stylesheet" href="map-search.css">
   <link rel="stylesheet" href="celebration.css">
+  <link rel="stylesheet" href="level-navigation.css">
   <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script defer src="app.js"></script>
   <script defer src="home.js"></script>
@@ -19,6 +20,7 @@
   <script defer src="map-search.js"></script>
   <script defer src="celebration.js"></script>
   <script defer src="quest-language.js"></script>
+  <script defer src="level-navigation.js"></script>
 </head>
 <body>
   <main>
@@ -26,7 +28,7 @@
     <section id="siteHero" class="hero"><div class="hero-copy"><p id="heroLabel">YOUR SEA QUEST</p><h1 id="rank">Seafarer</h1><span id="next">Start your first quest.</span><div class="sea-badges"><span id="busanBadge">🐚 BUSAN</span><span id="questBadge">🌊 55 QUESTS</span></div></div><div class="mascot-orbit"><span class="bubble bubble-one"></span><span class="bubble bubble-two"></span><img class="hero-mascot" src="assets/busan-mascot.png" alt="부산 바다 탐험 마스코트"></div></section>
     <section id="siteIntro" class="intro"><span id="greeting">부산앓이</span><h2 id="introTitle">Collect the sea,<br>one quest at a time.</h2><p id="introText">Every completed quest reveals a local reward.</p></section>
     <section id="homeScreen" class="screen"><div class="home-card"><div><p id="homeEyebrow">WELCOME TO BUSAN</p><h2 id="homeGreeting">부산 바다를<br>수집하러 갈까요?</h2><span id="homeStatus">첫 번째 퀘스트가 기다리고 있어요.</span><button type="button" class="home-cta" onclick="showScreen('quests')" id="homeCta">⚓ 퀘스트 시작</button></div><img src="assets/busan-mascot.png" alt="부기" class="home-mascot"></div><div class="home-guide"><h3 id="homeGuideTitle">오늘의 바다 탐험</h3><div><span>📷</span><p><b id="guidePhotoTitle">사진으로 인증</b><small id="guidePhotoText">부산의 장소에서 미션을 완료해요.</small></p></div><div><span>🗺️</span><p><b id="guideMapTitle">나만의 바다 지도</b><small id="guideMapText">찍은 사진과 추억이 지도에 쌓여요.</small></p></div><div><span>🎁</span><p><b id="guideRewardTitle">부산 로컬 보상</b><small id="guideRewardText">퀘스트 완료 후 특별한 보상을 만나요.</small></p></div></div></section>
-    <section id="questScreen" class="screen hide"><div class="quest-section-header"><div><p id="sectionLabel">SECTION 1</p><h2 id="sectionTitle">Rookie</h2><span id="sectionArea">해운대해수욕장 중심</span></div><div class="section-progress"><strong id="sectionProgress">0 / 5</strong><span id="completeLabel">완료</span></div></div><div id="questPath" class="quest-path"></div></section>
+    <section id="questScreen" class="screen hide"><div class="quest-section-header"><button id="previousLevelButton" class="level-arrow" type="button" onclick="moveQuestLevel(-1)" aria-label="이전 단계">‹</button><div class="level-heading"><p id="sectionLabel">SECTION 1</p><h2 id="sectionTitle">Rookie</h2><span id="sectionArea">해운대해수욕장 중심</span></div><div class="section-progress"><strong id="sectionProgress">0 / 5</strong><span id="completeLabel">완료</span></div><button id="nextLevelButton" class="level-arrow" type="button" onclick="moveQuestLevel(1)" aria-label="다음 단계">›</button></div><div id="questPath" class="quest-path"></div></section>
     <section id="mapScreen" class="screen hide"><div class="map-title"><div><p>BUSAN QUEST MAP</p><h2 id="mapTitle">부산 바다 탐험 지도</h2></div><button type="button" class="location-button" onclick="moveToMyLocation()" id="locationButton">내 위치</button></div><form class="map-search" onsubmit="searchMapLocation(event)"><input id="mapSearchInput" type="search" placeholder="장소 또는 주소 검색" autocomplete="off"><button id="mapSearchButton" type="submit">검색</button></form><p id="mapSearchStatus" class="map-search-status" aria-live="polite"></p><div id="map"></div><div class="map-guide"><span><i class="guide-dot available"></i><span id="availableGuide">진행 가능</span></span><span><i class="guide-dot complete"></i><span id="completeGuide">완료</span></span><span><i class="guide-dot locked"></i><span id="lockedGuide">잠김</span></span></div></section>
   </main>
   <div id="modal" class="modal hide"><div class="dialog"><div class="check">✓</div><h2 id="completeHeading">퀘스트 완료!</h2><p id="completeDescription">스탬프를 하나 받았어요.</p><div class="food"><b id="rewardLabel">NEW LOCAL PICK</b><strong id="foodname"></strong></div><button onclick="closeModal()" id="continueButton">계속하기</button></div></div>
