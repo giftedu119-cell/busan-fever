@@ -21,6 +21,7 @@ const QUEST_ENGLISH_TASKS={
   20:'Photograph the entire Gwangan Bridge and find out its length.'
 };
 function englishQuestTask(quest){return QUEST_ENGLISH_TASKS[quest.id]||`Complete Quest ${quest.id}: take a verification photo at this location.`}
+function selectedLanguageQuestTask(quest){const lang=localStorage.busanFeverLanguage||'ko';if(lang==='ko')return quest.title;if(lang==='en')return englishQuestTask(quest);if(lang==='ja')return `釜山クエスト ${quest.id}：この場所で写真認証ミッションを完了してください。`;return `釜山任务 ${quest.id}：请在此地点完成照片验证任务。`}
 localizedPlace=function(quest){return quest.place};
-localizedTitle=function(quest){return englishQuestTask(quest)};
+localizedTitle=function(quest){return selectedLanguageQuestTask(quest)};
 render();
