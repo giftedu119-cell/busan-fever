@@ -19,6 +19,8 @@ function showScreen(screenName) {
   const homeScreen = document.getElementById('homeScreen');
   const questScreen = document.getElementById('questScreen');
   const mapScreen = document.getElementById('mapScreen');
+  document.getElementById('siteHero').classList.toggle('hide', screenName !== 'home');
+  document.getElementById('siteIntro').classList.toggle('hide', screenName !== 'home');
 
   homeScreen.classList.toggle('hide', screenName !== 'home');
   questScreen.classList.toggle('hide', screenName !== 'quests');
