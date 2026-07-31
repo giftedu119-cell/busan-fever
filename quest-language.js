@@ -1,5 +1,5 @@
 const QUEST_ENGLISH_TASKS={
-  1:'Make “BUSAN” in the sand and take a photo with the sea.',
+  1:'Take a photo of a laptop.',
   2:'Find three seagulls and take a photo with them.',
   3:'Record the waves for 20 seconds and capture the biggest wave.',
   4:'Walk the beach for 15 minutes and photograph the waves, sand, and sky.',
@@ -21,7 +21,7 @@ const QUEST_ENGLISH_TASKS={
   20:'Photograph the entire Gwangan Bridge and find out its length.'
 };
 function englishQuestTask(quest){return QUEST_ENGLISH_TASKS[quest.id]||`Complete Quest ${quest.id}: take a verification photo at this location.`}
-const QUEST_ENGLISH_PLACES={1:'Haeundae Beach',2:'Haeundae Beach',3:'Haeundae Beach',4:'Haeundae Beach Trail',5:'Haeundae Traditional Market',6:'Dongbaekseom Island',7:'Dongbaekseom Coastal Trail',8:'Marine City Coast',9:'Haeundae Movie Street',10:'Mipo',11:'Dalmaji-gil',12:'Haewoljeong Pavilion',13:'Cheongsapo',14:'Cheongsapo Daritdol Observatory',15:'Gudeokpo Coast',16:'Songjeong Beach',17:'Songjeong Jukdo Park',18:'Haedong Yonggungsa Temple',19:'Osiria Coastal Trail',20:'Gwangalli Beach'};
+const QUEST_ENGLISH_PLACES={1:'Busan Port International Exhibition & Convention Center',2:'Haeundae Beach',3:'Haeundae Beach',4:'Haeundae Beach Trail',5:'Haeundae Traditional Market',6:'Dongbaekseom Island',7:'Dongbaekseom Coastal Trail',8:'Marine City Coast',9:'Haeundae Movie Street',10:'Mipo',11:'Dalmaji-gil',12:'Haewoljeong Pavilion',13:'Cheongsapo',14:'Cheongsapo Daritdol Observatory',15:'Gudeokpo Coast',16:'Songjeong Beach',17:'Songjeong Jukdo Park',18:'Haedong Yonggungsa Temple',19:'Osiria Coastal Trail',20:'Gwangalli Beach'};
 function selectedLanguageQuestTask(quest){const lang=localStorage.busanFeverLanguage||'ko';if(lang==='ko')return quest.title;if(lang==='en')return englishQuestTask(quest);if(lang==='ja')return `釜山クエスト ${quest.id}：この場所で写真認証ミッションを完了してください。`;return `釜山任务 ${quest.id}：请在此地点完成照片验证任务。`}
 function selectedLanguagePlace(quest){const lang=localStorage.busanFeverLanguage||'ko';if(lang==='ko')return quest.place;if(lang==='en')return QUEST_ENGLISH_PLACES[quest.id]||`Busan location ${quest.id}`;if(lang==='ja')return `釜山スポット ${quest.id}`;return `釜山地点 ${quest.id}`}
 localizedPlace=function(quest){return selectedLanguagePlace(quest)};
